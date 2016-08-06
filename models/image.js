@@ -56,7 +56,7 @@ exports.delete = function(id) {
 
 exports.update = function(id, newImage) {
   return new Promise((resolve, reject) => {
-  
+    
   });
 }
 //// LATER
