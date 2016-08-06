@@ -3,7 +3,7 @@ const squel = require('squel').useFlavour('mysql');
 const connection = require('../config/db');
 
 const uuid = require('uuid')
-const momeent = require('moment')
+const moment = require('moment')
 //Initialize the table 
 
 connection.query(`create table if not exists images (
