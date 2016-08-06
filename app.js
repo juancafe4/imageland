@@ -7,6 +7,9 @@ const app = express();
 //Port
 const port = process.env.PORT | 8000
 
+//VIEW CONFIGURATION
+app.set('view engine', 'ejs')
+//app.set('views', './views') We do not need it because it is set to default
 //MIDDLEWARES
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -16,6 +19,9 @@ app.use(express.static('public'));
 
 
 //Routes
+app.get('/', (req, res) => {
+  res.render('index');
+});
 app.use('/images', require('./routes/images'))
 
 //Server listen
