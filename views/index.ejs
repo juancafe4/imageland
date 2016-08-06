@@ -35,9 +35,9 @@
   </div>
 
 
-  <div class="row template hidden">
+  <div class="row template hidden media">
     <div class="col xs-12">
-      <div class="media">
+      
         <div class="media-left">
           <a href="#">
             <img class="media-object" >
@@ -46,10 +46,46 @@
         <div class="media-body">
           <h4 class="media-heading title">The title </h4>
           <h5 class="createdAt"></h5>
-          <span class="description"></span>
+          <p class="description"></p>
+          <button type="button" class="edit btn btn-primary btn-xs">Edit</button>
         </div>
       </div>
     </div>
   </div>
+
+
+  <div id="myEditModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <form action="">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Edit Image</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Iamge URL</label>
+              <input type="text" class="form-control url" >
+            </div>
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" class="form-control title">
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <input type="text" class="form-control descriptio">
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </form>
+
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </body>
 </html>
