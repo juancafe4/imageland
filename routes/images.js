@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id' , (req, res) => {
+  
   Image.delete(req.params.id)
     .then(() => {
       res.send();
@@ -41,4 +42,13 @@ router.delete('/:id' , (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+  Image.update(req.params.id, req.body)
+    .then(() => {
+      res.send();
+    })
+    .catch(err => {
+      res.status(400).send(err)
+    });
+});
 module.exports = router

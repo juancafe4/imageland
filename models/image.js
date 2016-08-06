@@ -54,9 +54,23 @@ exports.delete = function(id) {
   });
 }
 
-exports.update = function(id, newImage) {
+exports.update = function(id, updateObj) {
+  delete updateObj.id;
+  delete updateObj.createdAt;
   return new Promise((resolve, reject) => {
-    
+    let sql = squel.update()
+                .table('images')
+                .setFields(updateObj)
+                .where(`id = "${id}"`)
+                .toString();
+    connection.query(sql, (err, result) => {
+      // console.log(err)
+      //console.log('update args ', b, c, d, e);
+      if (!result.affectedRows)
+        reject(err)
+      else if(err) reject(err)
+      else resolve()
+    });
   });
 }
 //// LATER
