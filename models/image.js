@@ -20,12 +20,26 @@ exports.getAll = function() {
   return new Promise((resolve, reject) => {
     let sql = squel.select().from('images').toString();
     connection.query(sql, (err, images) => {
-      if (err) resolve(err)
+      if (err) reject(err)
       else resolve(images)
     });
   });
 }
 
+exports.getOne = function(id) {
+  return new Promise((resolve, reject) => {
+    let sql = squel.select()
+                  .from('images')
+                  .where(`id = "${id}"`)
+                  .toString();
+    connection.query(sql, (err, images) => {
+      let image = images[0]
+      if (err) reject(err)
+      else if(!image) reject("Error: image not found!")
+      else resolve(image)
+    });
+  });
+}
 exports.create =  function(newImage) {
   return new Promise((resolve, reject) => {
     let sql = squel.insert()
@@ -73,5 +87,7 @@ exports.update = function(id, updateObj) {
     });
   });
 }
+
+
 //// LATER
 // Image.getAll.then()....

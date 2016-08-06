@@ -5,6 +5,10 @@ const router = express.Router();
 //ROUTES
 const Image = require('../models/image')
 
+//Imgae (title case singular ---> model
+//image lowercase singular ----> one image object 
+//images lowercase plural ----> array of image objects
+
 router.get('/', (req, res) => {
   Image.getAll()
     .then(images => {
@@ -50,5 +54,15 @@ router.put('/:id', (req, res) => {
     .catch(err => {
       res.status(400).send(err)
     });
+});
+
+router.get('/:id', (req, res) => {
+  Image.getOne(req.params.id)
+  .then(image => {
+    res.send(image)
+  })
+  .catch(err => {
+    res.status(400).send(err)
+  });
 });
 module.exports = router
