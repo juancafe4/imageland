@@ -1,91 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Imageland</title>
-  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Imageland</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
-  <script src="main.js"></script>
-</head>
-<body>
-  <div class="container images">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+  <div class="container">
 
-    <!-- Title -->
-    <div class="row">
-      <div class="col-xs-12">
-        <h1 class="text-center">Imageland!</h1> 
+      <!-- Title -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-center">Imageland!</h1> 
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 images">
+
+
+        </div>
+
+
+      </div>
+
+
+      <div class="row template hidden media">
+        <div class="col xs-12">
+
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" >
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading title">The title </h4>
+            <h5 class="createdAt"></h5>
+            <p class="description"></p>
+            <button type="button" class="edit btn btn-primary btn-xs">Edit</button>
+            <button type="button" class="delete btn btn-danger btn-xs">Delete</button>
+          </div>
+        </div>
       </div>
     </div>
 
 
+    <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <form action="">
 
-
-  </div>
-
-
-  <div class="row template hidden media">
-    <div class="col xs-12">
-      
-        <div class="media-left">
-          <a href="#">
-            <img class="media-object" >
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading title">The title </h4>
-          <h5 class="createdAt"></h5>
-          <p class="description"></p>
-          <button type="button" class="edit btn btn-primary btn-xs">Edit</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div id="myEditModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <form action="">
-
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Edit Image</h4>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label>Iamge URL</label>
-              <input type="text" class="form-control url" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Edit Image</h4>
             </div>
-            <div class="form-group">
-              <label>Title</label>
-              <input type="text" class="form-control title">
-            </div>
-            <div class="form-group">
-              <label>Description</label>
-              <input type="text" class="form-control descriptio">
-            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Iamge URL</label>
+                <input type="text" class="form-control url" >
+              </div>
+              <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control title">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" class="form-control description">
+              </div>
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button  class="btn btn-primary">Save changes</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </form>
 
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</body>
-</html>
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="deletetModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Delete Image</h4>
+            </div>
+            <div class="modal-body">
+              <p>Do you really want to delete this image?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+              <button  type="button" class="btn btn-primary deleteButton">Yes</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </form>
+
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  </body>
+  </html>
