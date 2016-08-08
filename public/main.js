@@ -4,11 +4,12 @@ $(() => {
   $('.images').on('click', '.edit', openEditModal)
   $('#editModal').find('form').submit(saveEdit)
   $('.images').on('click', '.delete', openDeleteModal)
+  $('.deleteButton').click(deleteImage)
 })
 
 function saveEdit(e) {
   event.preventDefault()
-  console.log('click save and edit')
+
   let $editModal = $('#editModal')
 
   let id = $editModal.data('editingId')
@@ -82,9 +83,40 @@ function openEditModal(event) {
   });
 }
 
-function openDeleteModal(event) {
-  let $deleteButton = $(event.target)
-  let $deleteModal = $('#deleteModal');
 
-  $deleteButton
+function openDeleteModal(event) {
+
+  let $deleteButton = $(event.target)
+  let $deleteModal = $('#deletetModal');
+
+  let $media = $deleteButton.closest('.media')
+
+  let id = $media.data('id')
+
+  $deleteModal.data('deleteId', id);
+
+  $('#deletetModal').modal( {
+    keyboard: false,
+    backdrop: 'static'
+  });
+}
+
+function deleteImage(event) {
+  let $deleteModal = $('#deletetModal')
+  let id = $deleteModal.data('deleteId')
+  
+  $.ajax( {
+      url: `/images/${id}`,
+      method: 'DELETE'
+    })
+    .done(() => {
+      console.log('Succes deleting')
+      renderAllImages()
+    })
+    .fail(err => {
+      console.log("Error deleting")
+    })
+    .always(() => {
+      $deleteModal.modal('hide')
+    })
 }
