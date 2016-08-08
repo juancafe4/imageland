@@ -7,7 +7,7 @@ const morgan  = require('morgan');
 const bodyParser = require('body-parser')
 const app = express();
 //Port
-const port = process.env.PORT | 8000
+const port = process.env.PORT || 8000;
 
 //VIEW CONFIGURATION
 app.set('view engine', 'ejs')
