@@ -1,5 +1,7 @@
 //Initialize enirioment variables
-require('dotenv').config();
+if (!process.env.JAWSDB_URL)
+  require('dotenv').config();
+
 const express = require ('express');
 const morgan  = require('morgan');
 const bodyParser = require('body-parser')
