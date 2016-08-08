@@ -49,6 +49,7 @@ exports.create =  function(newImage) {
                   .set('createdAt', moment().format('YYYY/MM/DD HH:mm:ss'))
                   .toString();
     connection.query(sql, err => {
+      console.log(err)
       if(err) reject(err)
       else resolve()
     });

@@ -23,7 +23,7 @@
   <div class="container">
 
       <!-- Title -->
-      <div class="row">
+      <div class="row ">
         <div class="col-xs-12">
           <h1 class="text-center">Imageland!</h1> 
         </div>
@@ -31,10 +31,10 @@
       
       <!-- Add Button -->
       <div class="row">
-        <div class="col-xs-12">
-          <h1 class="text-center">Imageland!</h1> 
-        </div>
+        <div class="col-xs-12 text-center">
+          <button type="button" class="btn btn-primary btn-md add">+</button>
       </div>
+      <br><br>
       <div class="row">
         <div class="col-xs-12 images">
 
@@ -76,7 +76,7 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label>Iamge URL</label>
+                <label>Image URL</label>
                 <input type="text" class="form-control url" >
               </div>
               <div class="form-group">
@@ -115,6 +115,40 @@
               <button  type="button" class="btn btn-primary deleteButton">Yes</button>
             </div>
           </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="addModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <form action="">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Add Image</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" class="form-control url" required>
+              </div>
+              <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control title" required>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" class="form-control description" required>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button  class="btn btn-primary">Add Image</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </form>
+
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   </body>

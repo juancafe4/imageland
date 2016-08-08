@@ -5,6 +5,8 @@ $(() => {
   $('#editModal').find('form').submit(saveEdit)
   $('.images').on('click', '.delete', openDeleteModal)
   $('.deleteButton').click(deleteImage)
+  $('.add').click(openAddModal)
+  $('#addModal').find('form').submit(addImage)
 })
 
 function saveEdit(e) {
@@ -119,4 +121,42 @@ function deleteImage(event) {
     .always(() => {
       $deleteModal.modal('hide')
     })
+}
+
+function openAddModal(event) {
+  $('#addModal').modal( {
+    keyboard: false,
+    backdrop: 'static'
+  });
+}
+
+function addImage(event) {
+  event.preventDefault()
+  let $addModal = $('#addModal')
+
+  //Getting the stuff that we re going to post
+  let url = $addModal.find('.url').val();
+  let title = $addModal.find('.title').val();
+  let description = $addModal.find('.description').val();
+
+  console.log({url, title, description});
+
+  $.ajax( {
+    url: '/images',
+    method: 'POST',
+    data: {url, title, description}
+  })
+    .done(data => {
+      console.log('Success posting to the database ', data)
+      renderAllImages()
+      $addModal.find('.url').val('');
+      $addModal.find('.title').val('');
+      $addModal.find('.description').val('');
+    })
+    .fail(err => {
+      console.log('Error posting :(')
+    })
+    .always(() => {
+      $('#addModal').modal('hide')
+    });
 }
