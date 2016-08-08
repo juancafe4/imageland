@@ -1,3 +1,5 @@
+"use strict";
+
 //Image model
 const squel = require('squel').useFlavour('mysql');
 const connection = require('../config/db');
